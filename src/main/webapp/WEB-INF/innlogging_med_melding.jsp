@@ -11,9 +11,9 @@
 	<p style="color:red;">Du er logget ut</p>
 	<form method="post">
 		<fieldset>
-			<label for="mobil">Mobil:</label>
+			<label>Mobil:</label>
 			<input type="text" name="mobil" />
-			<label for="passord">Passord:</label>
+			<label>Passord:</label>
 			<input type="password" name="passord" />
 			<br><br><button type="submit">Logg inn</button>
 		</fieldset>
