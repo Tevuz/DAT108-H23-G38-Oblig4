@@ -3,7 +3,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" href="css/simple.css">
+	<link rel="stylesheet" href="/resources/css/simple.css">
 	<title>Deltagerliste</title>
 </head>
 <body>

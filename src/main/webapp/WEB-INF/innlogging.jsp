@@ -2,9 +2,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<link rel="stylesheet" href="css/simple.css">
-<title>Logg inn</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="/resources/css/simple.css">
+	<title>Logg inn</title>
 </head>
 <body>
 	<h2>Logg inn</h2>
