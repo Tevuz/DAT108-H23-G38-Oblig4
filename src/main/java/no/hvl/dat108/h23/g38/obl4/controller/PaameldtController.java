@@ -13,7 +13,7 @@ public class PaameldtController {
     public String index(Model model, HttpSession session) {
         Deltager deltager = (Deltager) session.getAttribute("Deltager");
         if (deltager == null)
-            return "redirect:index";
+            return "redirect:innlogging";
 
         model.addAttribute("fornavn", deltager.getFornavn());
         model.addAttribute("etternavn", deltager.getEtternavn());

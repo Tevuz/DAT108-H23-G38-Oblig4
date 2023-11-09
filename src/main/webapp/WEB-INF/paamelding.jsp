@@ -37,6 +37,7 @@
 
 			<br><br>
 			<button type="submit">Meld meg på</button>
+			<a href="innlogging" style="padding: 0 0 0 2em">logg inn</a>
 		</fieldset>
 	</form>
 </body>
