@@ -3,9 +3,8 @@
 <html lang="no">
 <head>
 	<meta charset="UTF-8">
-	<link href="css/simple.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="/resources/css/simple.css">
 	<script src="/resources/js/paamelding.js" defer></script>
-<!-- <script src="js/myscript.js" defer></script>  -->  
 	<title>Påmelding</title>
 </head>
 

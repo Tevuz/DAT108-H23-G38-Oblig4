@@ -2,9 +2,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<link rel="stylesheet" href="css/simple.css">
-<title>Påmeldingsbekreftelse</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="/resources/css/simple.css">
+	<title>Påmeldingsbekreftelse</title>
 </head>
 <body>
 	<h2>Påmeldingsbekreftelse</h2>
