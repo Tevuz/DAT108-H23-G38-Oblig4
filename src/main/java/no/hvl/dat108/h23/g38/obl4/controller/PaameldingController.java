@@ -49,7 +49,7 @@ public class PaameldingController {
         try {
             deltagerService.create(deltager);
         } catch (EntityStateException e) {
-            model.addAttribute("feilmelding", valid ? null : "Deltager med samme mobilnummer er allerede registrert");
+            model.addAttribute("feilmelding", "Deltager med samme mobilnummer er allerede registrert");
             return "paamelding";
         }
 
