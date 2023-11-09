@@ -1,7 +1,10 @@
 package no.hvl.dat108.h23.g38.obl4.controller;
 
 import no.hvl.dat108.h23.g38.obl4.controller.data.DeltagerDTO;
+import no.hvl.dat108.h23.g38.obl4.model.Deltager;
+import no.hvl.dat108.h23.g38.obl4.model.Passord;
 import no.hvl.dat108.h23.g38.obl4.service.DeltagerService;
+import no.hvl.dat108.h23.g38.obl4.service.EntityStateException;
 import no.hvl.dat108.h23.g38.obl4.service.PassordService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,18 +27,32 @@ public class PaameldingController {
     }
 
     @PostMapping("/paamelding")
-    public String submit(DeltagerDTO deltager, Model model) {
-        var valid = validate(deltager);
+    public String submit(DeltagerDTO dto, Model model) {
+        var valid = validate(dto);
         if (!valid) {
             model.addAttribute("feilmelding", valid ? null : "Påmeldingsdetaljer er ugyldige");
             return "paamelding";
         }
 
-        model.addAttribute("fornavn", deltager.getFornavn());
-        model.addAttribute("etternavn", deltager.getEtternavn());
-        model.addAttribute("mobil", deltager.getMobil());
-        model.addAttribute("kjonn", deltager.getKjonn());
-        return "paameldt";
+        var passord = new Passord();
+        passord.setSalt(passordService.genererTilfeldigSalt());
+        passord.setHash(passordService.hashMedSalt(dto.getPassord(), passord.getSalt()));
+
+        var deltager = new Deltager();
+        deltager.setFornavn(dto.getFornavn());
+        deltager.setEtternavn(dto.getEtternavn());
+        deltager.setMobil(dto.getMobil());
+        deltager.setPassord(passord);
+        deltager.setKjonn(dto.getKjonn());
+
+        try {
+            deltagerService.create(deltager);
+        } catch (EntityStateException e) {
+            model.addAttribute("feilmelding", valid ? null : "Deltager med samme mobilnummer er allerede registrert");
+            return "paamelding";
+        }
+
+        return "redirect:paameldt";
     }
 
     //TODO: Valider passord og kjonn
