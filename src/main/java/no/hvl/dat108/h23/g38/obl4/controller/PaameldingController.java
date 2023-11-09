@@ -1,14 +1,22 @@
 package no.hvl.dat108.h23.g38.obl4.controller;
 
 import no.hvl.dat108.h23.g38.obl4.controller.data.DeltagerDTO;
+import no.hvl.dat108.h23.g38.obl4.service.DeltagerService;
+import no.hvl.dat108.h23.g38.obl4.service.PassordService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
-
 @Controller
 public class PaameldingController {
+
+    private final DeltagerService deltagerService;
+    private final PassordService passordService;
+
+    public PaameldingController(DeltagerService deltagerService, PassordService passordService) {
+        this.deltagerService = deltagerService;
+        this.passordService = passordService;
+    }
 
     @GetMapping("/paamelding")
     public String index() {
