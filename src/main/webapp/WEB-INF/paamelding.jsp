@@ -4,6 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<link href="css/simple.css" rel="stylesheet" type="text/css" />
+	<script src="/resources/js/paamelding.js" defer></script>
 <!-- <script src="js/myscript.js" defer></script>  -->  
 	<title>Påmelding</title>
 </head>
@@ -13,7 +14,7 @@
 	<% if (request.getAttribute("feilmelding") != null) { %>
 		<p style="color:red;">${feilmelding}</p>
 	<% } %>
-	<form method="post">
+	<form method="post" id="form">
 		<fieldset>
 		
 			<label>Fornavn</label>
@@ -23,15 +24,16 @@
 			<input type="text" name="etternavn" value="" />
 			
 			<label>Mobil (8 siffer)</label>
-			<input type="text" name="mobil" value="" />
-			
+			<input type="text" name="mobil" value=""/>
+
 			<label>Passord</label>
 			<input type="password" name="passord" />
+
 			<label>Passord repetert</label>
 			<input type="password" name="passordRepetert" />
 
 			<label>Kjønn</label>
-			<input type="radio" name="kjonn" value="mann" checked="checked" />mann
+			<input type="radio" name="kjonn" value="mann" checked="true"/>mann
 			<input type="radio" name="kjonn" value="kvinne" />kvinne
 
 			<br><br>

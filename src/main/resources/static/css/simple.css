@@ -401,6 +401,9 @@ input {
   max-width: 100%;
   display: inline-block;
 }
+input:invalid {
+  border: 2px solid red;
+}
 label {
   display: block;
 }
