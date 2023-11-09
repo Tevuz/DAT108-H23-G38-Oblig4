@@ -58,7 +58,7 @@ public class PaameldingController {
         return "redirect:paameldt";
     }
 
-    private boolean validate(DeltagerDTO deltager) {
+    public static boolean validate(DeltagerDTO deltager) {
         // Fornavn skal starte med bokstave (kapitalisert)
         // må inneholde 2 til 20 tegn
         // tillatte tegn: bokstaver, bindestrek, mellomrom.
@@ -72,7 +72,7 @@ public class PaameldingController {
             return false;
 
         // Mobilnummer skal ha eksakt 8 desimaltall.
-        if (!deltager.getMobil().matches("^\\d{8}$"))
+        if (!deltager.getMobil().matches("^[0-9]{8}$"))
             return false;
 
         if (deltager.getPassord().isBlank())
