@@ -55,28 +55,28 @@ public class PaameldingController {
         return "redirect:paameldt";
     }
 
-    //TODO: Valider passord og kjonn
     private boolean validate(DeltagerDTO deltager) {
         // Fornavn skal starte med bokstave (kapitalisert)
         // må inneholde 2 til 20 tegn
         // tillatte tegn: bokstaver, bindestrek, mellomrom.
-        if (!deltager.getFornavn().matches("^\\p{L}[\\p{L}- ]{1,19}$"))
+        if (!deltager.getFornavn().matches("^\\p{L}(\\p{L}|-| ){1,19}$"))
             return false;
 
         // Etternavn skal starte med bokstav (kapitalisert)
         // må inneholde 2 til 20 tegn
         // tillatte tegn: bokstaver, bindestrek.
-        if (!deltager.getEtternavn().matches("^\\p{L}[\\p{L}-]{1,19}$"))
+        if (!deltager.getEtternavn().matches("^\\p{L}(\\p{L}|-){1,19}$"))
             return false;
 
         // Mobilnummer skal ha eksakt 8 desimaltall.
         if (!deltager.getMobil().matches("^\\d{8}$"))
             return false;
 
-        /*if (deltager.getPassord().isBlank())
+        if (deltager.getPassord().isBlank())
             return false;
-        if (deltager.getPassordRepetert().isBlank())
-            return false;*/
+
+        if (!deltager.getKjonn().matches("^(mann|kvinne)$"))
+            return false;
 
         return true;
     }
