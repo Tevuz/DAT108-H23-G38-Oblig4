@@ -1,5 +1,6 @@
 package no.hvl.dat108.h23.g38.obl4.controller;
 
+import jakarta.servlet.http.HttpSession;
 import no.hvl.dat108.h23.g38.obl4.controller.data.DeltagerDTO;
 import no.hvl.dat108.h23.g38.obl4.model.Deltager;
 import no.hvl.dat108.h23.g38.obl4.model.Passord;
@@ -27,7 +28,7 @@ public class PaameldingController {
     }
 
     @PostMapping("/paamelding")
-    public String submit(DeltagerDTO dto, Model model) {
+    public String submit(DeltagerDTO dto, Model model, HttpSession session) {
         var valid = validate(dto);
         if (!valid) {
             model.addAttribute("feilmelding", valid ? null : "Påmeldingsdetaljer er ugyldige");
@@ -51,6 +52,8 @@ public class PaameldingController {
             model.addAttribute("feilmelding", valid ? null : "Deltager med samme mobilnummer er allerede registrert");
             return "paamelding";
         }
+
+        session.setAttribute("Deltager", deltager);
 
         return "redirect:paameldt";
     }
