@@ -10,7 +10,9 @@
 
 <body>
 	<h2>Påmelding</h2>
-	<p style="color:red;">Påmeldingsdetaljer er ugyldige</p>
+	<% if (request.getAttribute("feilmelding") != null) { %>
+		<p style="color:red;">${feilmelding}</p>
+	<% } %>
 	<form method="post">
 		<fieldset>
 		
@@ -27,11 +29,11 @@
 			<input type="password" name="passord" />
 			<label>Passord repetert</label>
 			<input type="password" name="passordRepetert" />
-			
-			<label>Kjønn</label> 
+
+			<label>Kjønn</label>
 			<input type="radio" name="kjonn" value="mann" checked="checked" />mann
 			<input type="radio" name="kjonn" value="kvinne" />kvinne
-			     
+
 			<br><br>
 			<button type="submit">Meld meg på</button>
 		</fieldset>
