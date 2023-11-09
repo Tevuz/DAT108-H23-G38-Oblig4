@@ -6,10 +6,10 @@ import no.hvl.dat108.h23.g38.obl4.model.Deltager;
 import no.hvl.dat108.h23.g38.obl4.service.DeltagerService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.stream.Collectors;
 
 @Controller
@@ -20,7 +20,6 @@ public class DeltagerlisteController {
     public DeltagerlisteController(DeltagerService deltagerService) {
         this.deltagerService = deltagerService;
     }
-
 
     @RequestMapping("/deltagerliste")
     public String index(Model model, HttpSession session) {
@@ -47,5 +46,10 @@ public class DeltagerlisteController {
         model.addAttribute("deltagere", tableData);
 
         return "deltagerliste";
+    }
+
+    @PostMapping("/utlogging")
+    public String loggOut() {
+        return "redirect:innlogging";
     }
 }
