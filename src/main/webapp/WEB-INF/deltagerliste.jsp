@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +8,7 @@
 	<title>Deltagerliste</title>
 </head>
 <body>
-    <p>Innlogget som: 90123456 / Arne Arnesen</p>
+    <p>Innlogget som: ${mobil} / ${fornavn} ${etternavn}</p>
 	<h2>Deltagerliste</h2>
 	<table>
 		<tr>
@@ -15,36 +16,13 @@
 			<th align="left">Navn</th>
 			<th align="left">Mobil</th>
 		</tr>
-            <tr style=>
-				<td align="center">&#9792;</td>
-				<td>Anne Panne</td>
-				<td>234 56 789</td>
+		<c:forEach var="deltager" items="${deltagere}">
+			<tr>
+				<td>${deltager.kjonn}</td>
+				<td>${deltager.fornavn} ${deltager.etternavn}</td>
+				<td>${deltager.mobil}</td>
 			</tr>
-		
-            <tr style=background-color:#aaffaa;>
-				<td align="center">&#9794;</td>
-				<td>Arne Arnesen</td>
-				<td>901 23 456</td>
-			</tr>
-		
-            <tr style=>
-				<td align="center">&#9794;</td>
-				<td>Lars-Petter Helland</td>
-				<td>123 45 679</td>
-			</tr>
-		
-            <tr style=>
-				<td align="center">&#9794;</td>
-				<td>Per Viskelær</td>
-				<td>345 34 534</td>
-			</tr>
-		
-            <tr style=>
-				<td align="center">&#9792;</td>
-				<td>Xx-x Xxx</td>
-				<td>123 21 378</td>
-			</tr>
-
+		</c:forEach>
 	</table>
 	<br>
 	<form action="utlogging" method="post">
