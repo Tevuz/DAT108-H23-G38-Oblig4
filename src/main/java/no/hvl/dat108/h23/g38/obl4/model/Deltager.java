@@ -4,7 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
 @Entity
-public class Deltager {
+public class Deltager implements ModelEntity<String> {
 
     @Id
     private String mobil;
@@ -12,6 +12,11 @@ public class Deltager {
     private String fornavn;
     private String etternavn;
     private String kjonn;
+
+    @Override
+    public String getID() {
+        return getMobil();
+    }
 
     public String getMobil() {
         return mobil;
